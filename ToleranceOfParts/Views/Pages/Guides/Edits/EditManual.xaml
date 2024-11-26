@@ -1,0 +1,139 @@
+﻿<pages:DisposablePage x:Class="ToleranceOfParts.Views.Pages.Guides.Edits.EditManual"
+                      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                      xmlns:local="clr-namespace:ToleranceOfParts.Views.Pages.Guides.Edits"
+                      xmlns:pages="clr-namespace:OPP.ViewClasses;assembly=Resources"
+                      mc:Ignorable="d"
+                      d:DesignHeight="450"
+                      d:DesignWidth="800"
+                      Title="EditManual"
+                      Background="White">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="auto" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Button x:Name="Back"
+                    Click="GoBack"
+                    HorizontalAlignment="Left"
+                    Width="86"
+                    Padding="0,2">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="auto" />
+                        <ColumnDefinition Width="auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Image Source="/Assets/Left.png"
+                           Margin="0,0,5,0" />
+                    <TextBlock Text="Назад"
+                               Grid.Column="1" />
+
+                </Grid>
+            </Button>
+            <StackPanel Grid.Column="1"
+                        Orientation="Horizontal">
+                <TextBlock Text="Руководство "
+                           FontSize="18"
+                           FontWeight="DemiBold"
+                           VerticalAlignment="Center" />
+                <TextBlock Text="{Binding Manual.Name}"
+                           FontSize="18"
+                           FontWeight="Bold"
+                           VerticalAlignment="Center" />
+            </StackPanel>
+        </Grid>
+
+        <ScrollViewer Grid.Row="1"
+                      VerticalScrollBarVisibility="Disabled"
+                      HorizontalScrollBarVisibility="Auto">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="auto" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="auto" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="auto" />
+                </Grid.RowDefinitions>
+
+                <TextBlock Text="Код: "
+                           Margin="5,0"
+                           FontWeight="DemiBold"
+                           FontSize="16"
+                           Grid.Column="0"
+                           Grid.Row="0" />
+                <TextBlock Text="Название: "
+                           Margin="5,0"
+                           FontWeight="DemiBold"
+                           FontSize="16"
+                           Grid.Column="0"
+                           Grid.Row="1" />
+                <TextBlock Text="Описание: "
+                           Margin="5,0"
+                           FontWeight="DemiBold"
+                           FontSize="16"
+                           Grid.Column="0"
+                           Grid.Row="2" />
+
+                <TextBox Text="{Binding Path=DataContext.Manual.Code, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Margin="5,0"
+                         FontSize="16"
+                         Grid.Column="1"
+                         Grid.Row="0" />
+                <TextBox Text="{Binding Path=DataContext.Manual.Name, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Margin="5,0"
+                         FontSize="16"
+                         Grid.Column="1"
+                         Grid.Row="1" />
+                <TextBox Text="{Binding Path=DataContext.Manual.Description, RelativeSource={RelativeSource AncestorType=Page}}"
+                         Style="{StaticResource MaterialDesignOutlinedTextBox}"
+                         AcceptsReturn="True"
+                         AcceptsTab="True"
+                         Margin="5"
+                         FontSize="16"
+                         Grid.Column="1"
+                         Grid.Row="2"
+                         VerticalScrollBarVisibility="Auto">
+                </TextBox>
+            </Grid>
+        </ScrollViewer>
+
+
+
+        <Button Style="{StaticResource GuidesEditingButton}" x:Name="SaveManual"
+                Grid.Row="4"
+                Click="SaveManual_Click"
+                HorizontalAlignment="Stretch"
+                Margin="5">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+                <Image Source="/Assets/Save.png"
+                       Margin="0,0,5,0"
+                       HorizontalAlignment="Right" />
+                <TextBlock Text="Сохранить руководство"
+                           Grid.Column="1"
+                           HorizontalAlignment="Left"
+                           FontWeight="Bold" />
+            </Grid>
+        </Button>
+
+    </Grid>
+</pages:DisposablePage>

@@ -1,0 +1,138 @@
+﻿<Page x:Class="ToleranceOfParts.Views.Pages.Guides.Manuals"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ToleranceOfParts.Views.Pages.Guides"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="Manuals"
+      Background="White"
+      Name="GuidesManualsPage">
+
+    <Page.Resources>
+        <Style TargetType="Button"
+               BasedOn="{StaticResource GuidesEditingButton}" />
+    </Page.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="2" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <ScrollViewer VerticalScrollBarVisibility="Disabled">
+            <WrapPanel Orientation="Horizontal">
+                <Button x:Name="AddManual"
+                        Click="AddManual_Click"
+                        Cursor="Hand">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Assets/Add.png"
+                               Margin="0,2,5,2" />
+                        <TextBlock Text="Добавить"
+                                   Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button x:Name="EditManual"
+                        Click="EditManual_Click">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Assets/Edit.png"
+                               Margin="0,2,5,2" />
+                        <TextBlock Text="Редактировать"
+                                   Grid.Column="1" />
+                    </Grid>
+                </Button>
+                <Button x:Name="DeleteManual"
+                        Click="DeleteManual_Click">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+                        <Image Source="/Assets/Delete.png"
+                               Margin="0,2,5,2" />
+                        <TextBlock Text="Удалить"
+                                   Grid.Column="1" />
+                    </Grid>
+                </Button>
+            </WrapPanel>
+        </ScrollViewer>
+
+        <Label Grid.Row="1"
+               Background="Black"
+               Margin="5,0" />
+
+        <DataGrid x:Name="ManualDataGrid"
+                  Grid.Row="2"
+                  Margin="5"
+                  AutoGenerateColumns="False"
+                  MouseDoubleClick="EditManual_Click"
+                  ItemsSource="{Binding Path=DataContext.Manuals, RelativeSource={RelativeSource AncestorType=Page}}"
+                  SelectedItem="{Binding SelectedManual}"
+                  IsReadOnly="True">
+            <DataGrid.ContextMenu>
+                <ContextMenu>
+                    <MenuItem Click="AddManual_Click"
+                              Header="Добавить"
+                              Height="25">
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/Add.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="EditManual_Click"
+                              Header="Редактировать"
+                              Height="25">
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/Edit.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                    <MenuItem Click="DeleteManual_Click"
+                              Header="Удалить"
+                              Height="25">
+                        <MenuItem.Icon>
+                            <Image Source="/Assets/Delete.png" />
+                        </MenuItem.Icon>
+                    </MenuItem>
+                </ContextMenu>
+            </DataGrid.ContextMenu>
+            <DataGrid.Columns>
+
+                <DataGridTextColumn Header="Код"
+                                    Binding="{Binding Code}"
+                                    Width="auto">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Название"
+                                    Binding="{Binding Name}"
+                                    Width="auto">
+                </DataGridTextColumn>
+
+                <DataGridTextColumn Header="Описание"
+                                    Binding="{Binding Description}"
+                                    Width="*"
+                                    >
+                    <DataGridTextColumn.ElementStyle>
+                        <Style TargetType="TextBlock"
+                               BasedOn="{StaticResource MaterialDesignDataGridTextColumnStyle}">
+                            <Setter Property="MaxHeight"
+                                    Value="200" />
+                        </Style>
+                    </DataGridTextColumn.ElementStyle>
+                </DataGridTextColumn>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+
+    </Grid>
+</Page>
