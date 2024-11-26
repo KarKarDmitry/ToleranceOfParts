@@ -24,7 +24,7 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled">
             <WrapPanel Orientation="Horizontal">
-                <Button x:Name="AddPackaging"
+                <Button x:Name="Add"
                         Click="AddPackaging_Click"
                         Cursor="Hand">
                     <Grid>

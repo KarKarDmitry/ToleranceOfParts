@@ -82,45 +82,52 @@ namespace ToleranceOfParts.Views.Pages.Guides
             PopupImage.RenderTransformOrigin = new Point(offsetX, offsetY);
         }
 
-        private async void LoadGlobal()
+        private void LoadGlobal()
         {
-            try
+            Task.Run(async () =>
             {
-                await Task.Run(async () =>
+                try
                 {
-                    await Dispatcher.InvokeAsync(() =>
-                    {
-                        foreach (var @lock in Lock.GetAll())
-                        {
-                            GlobalLocks.Add(new GlobalLock(@lock));
-                        }
-                    });
-                });
 
-                await Task.Run(async () =>
-                {
-                    await Dispatcher.InvokeAsync(() =>
-                    {
-                        foreach (var assembly in Assembly.GetAll())
+                    if (GlobalLocks.Count == 0)
+                        await Task.Run(async () =>
                         {
-                            GlobalAssemblies.Add(new GlobalAssembly(assembly));
-                        }
-                    });
-                });
+                            await Dispatcher.InvokeAsync(() =>
+                            {
+                                foreach (var @lock in Lock.GetAll())
+                                {
+                                    GlobalLocks.Add(new GlobalLock(@lock));
+                                }
+                            });
+                        });
 
-                await Task.Run(async () =>
-                {
-                    await Dispatcher.InvokeAsync(() =>
-                    {
-                        foreach (var part in Part.GetAll())
+                    if (GlobalAssemblies.Count == 0)
+                        await Task.Run(async () =>
                         {
-                            GlobalParts.Add(new GlobalPart(part));
-                        }
-                    });
-                });
+                            await Dispatcher.InvokeAsync(() =>
+                            {
+                                foreach (var assembly in Assembly.GetAll())
+                                {
+                                    GlobalAssemblies.Add(new GlobalAssembly(assembly));
+                                }
+                            });
+                        });
 
-            }
-            catch { }
+                    if (GlobalParts.Count == 0)
+                        await Task.Run(async () =>
+                        {
+                            await Dispatcher.InvokeAsync(() =>
+                            {
+                                foreach (var part in Part.GetAll())
+                                {
+                                    GlobalParts.Add(new GlobalPart(part));
+                                }
+                            });
+                        });
+
+                }
+                catch { }
+            });
         }
 
         private void OpenNodeExternal(object sender, RoutedEventArgs e)

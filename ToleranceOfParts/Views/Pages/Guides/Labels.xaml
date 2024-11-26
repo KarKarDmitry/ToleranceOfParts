@@ -24,7 +24,7 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled">
             <WrapPanel Orientation="Horizontal">
-                <Button x:Name="AddLabel"
+                <Button x:Name="Add"
                         Click="AddLabel_Click"
                         Cursor="Hand">
                     <Grid>

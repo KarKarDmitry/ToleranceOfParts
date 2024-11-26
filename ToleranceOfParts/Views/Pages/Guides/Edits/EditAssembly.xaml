@@ -396,7 +396,7 @@
                                                     Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid>
+                                        <Grid PreviewMouseUp="CellGrid_PreviewMouseUp">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />
@@ -443,7 +443,7 @@
                                                     Width="*">
                                 <DataGridTemplateColumn.CellTemplate>
                                     <DataTemplate>
-                                        <Grid>
+                                        <Grid PreviewMouseUp="CellGrid_PreviewMouseUp">
                                             <Grid.ColumnDefinitions>
                                                 <ColumnDefinition Width="*" />
                                                 <ColumnDefinition Width="auto" />

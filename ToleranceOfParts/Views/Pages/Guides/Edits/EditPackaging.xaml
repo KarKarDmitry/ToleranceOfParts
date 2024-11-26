@@ -168,7 +168,7 @@
 
                             </Button>
 
-                            <Button x:Name="AddBox"
+                            <Button x:Name="Add"
                                     Click="AddBox_Click"
                                     Style="{StaticResource MaterialDesignFlatDarkButton}">
                                 <Grid>
@@ -402,7 +402,7 @@
                                                         </Grid>
                                                     </Button>
 
-                                                    <Button x:Name="AddLock"
+                                                    <Button x:Name="Add"
                                                             Click="AddLock_Click"
                                                             Style="{StaticResource MaterialDesignFlatDarkButton}">
                                                         <Grid>
@@ -856,7 +856,7 @@
                                                         </Grid>
                                                     </Button>
 
-                                                    <Button x:Name="AddPart"
+                                                    <Button x:Name="Add"
                                                             Click="AddPart_Click"
                                                             Style="{StaticResource MaterialDesignFlatDarkButton}">
                                                         <Grid>

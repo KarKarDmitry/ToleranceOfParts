@@ -169,7 +169,7 @@
 
                             </Button>
 
-                            <Button x:Name="AddPackage"
+                            <Button x:Name="Add"
                                     Click="AddPackage_Click"
                                     Style="{StaticResource MaterialDesignFlatDarkButton}">
                                 <Grid>
@@ -402,7 +402,7 @@
                                                         </Grid>
                                                     </Button>
 
-                                                    <Button x:Name="AddAssembly"
+                                                    <Button x:Name="Add"
                                                             Click="AddAssembly_Click"
                                                             Style="{StaticResource MaterialDesignFlatDarkButton}">
                                                         <Grid>
@@ -628,7 +628,7 @@
                                                         </Grid>
                                                     </Button>
 
-                                                    <Button x:Name="AddPart"
+                                                    <Button x:Name="Add"
                                                             Click="AddPart_Click"
                                                             Style="{StaticResource MaterialDesignFlatDarkButton}">
                                                         <Grid>

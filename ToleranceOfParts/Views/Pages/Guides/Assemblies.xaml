@@ -23,7 +23,7 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled">
             <WrapPanel Orientation="Horizontal">
-                <Button x:Name="AddAssembly"
+                <Button x:Name="Add"
                         Click="AddAssembly_Click"
                         Cursor="Hand">
                     <Grid>
@@ -50,7 +50,7 @@
                                    Grid.Column="1" />
                     </Grid>
                 </Button>
-                <Button x:Name="DeleteAssembly"
+                <Button x:Name="Delete"
                         Click="DeleteAssembly_Click">
                     <Grid>
                         <Grid.ColumnDefinitions>

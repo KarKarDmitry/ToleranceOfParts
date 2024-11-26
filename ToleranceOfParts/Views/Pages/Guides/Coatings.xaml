@@ -24,7 +24,7 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled">
             <WrapPanel Orientation="Horizontal">
-                <Button x:Name="AddCoating"
+                <Button x:Name="Add"
                         Click="AddCoating_Click"
                         Cursor="Hand">
                     <Grid>

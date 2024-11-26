@@ -24,7 +24,7 @@
 
         <ScrollViewer VerticalScrollBarVisibility="Disabled">
             <WrapPanel Orientation="Horizontal">
-                <Button x:Name="AddBlank"
+                <Button x:Name="Add"
                         Click="AddBlank_Click"
                         Cursor="Hand">
                     <Grid>

@@ -34,9 +34,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\..\..\Model\Model\Model.csproj" />
-	  <ProjectReference Include="..\..\..\Resources\Resources\Resources.csproj" />
-	  <ProjectReference Include="..\..\..\ViewModel\ViewModel\ViewModel.csproj" />
+	  <Reference Include="Model">
+	    <HintPath>..\..\..\Model\Model\bin\Debug\net8.0-windows\Model.dll</HintPath>
+	  </Reference>
+	  <Reference Include="Resources">
+	    <HintPath>..\..\..\Resources\Resources\bin\Debug\net8.0-windows\Resources.dll</HintPath>
+	  </Reference>
+	  <Reference Include="ViewModel">
+	    <HintPath>..\..\..\ViewModel\ViewModel\bin\Debug\net8.0-windows\ViewModel.dll</HintPath>
+	  </Reference>
 	</ItemGroup>
 
 	<ItemGroup>

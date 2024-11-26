@@ -173,7 +173,7 @@
 
                             </Button>
 
-                            <Button x:Name="AddLabel"
+                            <Button x:Name="Add"
                                     Click="AddLabel_Click"
                                     Style="{StaticResource MaterialDesignFlatDarkButton}">
                                 <Grid>

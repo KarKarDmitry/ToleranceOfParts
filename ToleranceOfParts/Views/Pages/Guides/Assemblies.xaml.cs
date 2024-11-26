@@ -1,8 +1,21 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-using OPP.Navigation;
+﻿using OPP.ViewModels;
 using OPP.ViewModels.Guides;
 using ToleranceOfParts.Views.Pages.Guides.Edits;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows;
+using System.Windows.Controls;
+using System.Windows.Data;
+using System.Windows.Documents;
+using System.Windows.Input;
+using System.Windows.Media;
+using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
+using System.Windows.Shapes;
+using OPP.Navigation;
 
 namespace ToleranceOfParts.Views.Pages.Guides
 {
@@ -26,6 +39,7 @@ namespace ToleranceOfParts.Views.Pages.Guides
 
         private void EditAssembly_Click(object sender, RoutedEventArgs e)
         {
+            if (viewModel.SelectedAssembly == null) return;
             NavigationManager.Navigate(new EditAssembly(viewModel.SelectedAssembly));
         }
 

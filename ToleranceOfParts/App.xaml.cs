@@ -24,13 +24,13 @@ namespace ToleranceOfParts
             RegisterPage("GuidesLabelsPage", () => new Labels());
             RegisterPage("GuidesLocksPage", () => new Locks());
             RegisterPage("GuidesManualsPage", () => new Manuals());
-            RegisterPage("GuidesMaterialsPage", () => new Materials());
             RegisterPage("GuidesPackagingsPage", () => new Packagings());
             RegisterPage("GuidesPartsPage", () => new Parts());
         }
 
         private static Dictionary<string, Func<Page>> PageConstructors = new Dictionary<string, Func<Page>>();
         private static Dictionary<string, Page> NavigationPages = new Dictionary<string, Page>();
+        private static Dictionary<string, WeakReference<Page>> CachedPages = new Dictionary<string, WeakReference<Page>>();
 
         public static Page GetNavigationPage<NavigationPageType>(string name) where NavigationPageType : Page, new()
         {
@@ -55,10 +55,20 @@ namespace ToleranceOfParts
 
         public static Page GetPage(string name)
         {
+            // Проверяем, есть ли уже созданная страница
+            if (CachedPages.TryGetValue(name, out var weakReference) && weakReference.TryGetTarget(out var existingPage))
+            {
+                return existingPage;
+            }
+
+            // Если страницы нет, создаём её через конструктор и сохраняем в кеш
             if (PageConstructors.ContainsKey(name))
             {
-                return PageConstructors[name]();
+                var newPage = PageConstructors[name]();
+                CachedPages[name] = new WeakReference<Page>(newPage);
+                return newPage;
             }
+
             throw new InvalidOperationException($"Page '{name}' not found in PageFactory.");
         }
 
@@ -67,7 +77,15 @@ namespace ToleranceOfParts
             if (PageConstructors.ContainsKey(name))
             {
                 PageConstructors.Remove(name);
+
+                // Удаляем связанную страницу из кеша
+                if (CachedPages.TryGetValue(name, out var weakReference) && weakReference.TryGetTarget(out var page) && page is IDisposable disposablePage)
+                {
+                    disposablePage.Dispose();
+                }
+                CachedPages.Remove(name);
             }
         }
+
     }
 }
