@@ -14,7 +14,7 @@
             <Trigger Property="ToggleButton.IsChecked"
                      Value="True">
                 <Setter Property="Background"
-                        Value="LightGray" />
+                        Value="{DynamicResource ActiveLightBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>
@@ -28,7 +28,7 @@
             <Trigger Property="ToggleButton.IsChecked"
                      Value="True">
                 <Setter Property="Background"
-                        Value="LightGray" />
+                        Value="{DynamicResource ActiveLightBrush}" />
             </Trigger>
         </Style.Triggers>
     </Style>

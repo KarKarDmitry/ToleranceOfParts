@@ -7,6 +7,7 @@ using System.Windows.Controls;
 using ToleranceOfParts.Views.Pages.Accounting;
 using OPP.AppData.Registers.Movements;
 using OPP.AppData.Registers;
+using OPP.Environment;
 
 namespace ToleranceOfParts
 {
@@ -14,6 +15,8 @@ namespace ToleranceOfParts
     {
         static App()
         {
+            ThemeColorPicker.LoadAccentColorFromSettings();
+
             RegisterPage("GuidesPackagesPage", () => new Packages());
             RegisterPage("GuidesAssembliesPage", () => new Assemblies());
             RegisterPage("GuidesBlanksPage", () => new Blanks());

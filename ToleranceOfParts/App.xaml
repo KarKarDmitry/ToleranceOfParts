@@ -3,17 +3,26 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:ToleranceOfParts"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:env="clr-namespace:OPP.Environment;assembly=Resources"
              StartupUri="Views\Windows\MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
-            <ResourceDictionary.MergedDictionaries>
-                <materialDesign:CustomColorTheme BaseTheme="Light"
-                                                 PrimaryColor="DarkGray"
-                                                 SecondaryColor="Gray" />
 
-                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
-                <ResourceDictionary Source="/ResourceDictionaries/Resources.xaml" />
-            </ResourceDictionary.MergedDictionaries>
+            <SolidColorBrush x:Key="ActiveBrush"
+                             Color="{x:Static env:ThemeColorPicker.ActiveColor}" />
+            <SolidColorBrush x:Key="ActiveLightBrush"
+                             Color="{x:Static env:ThemeColorPicker.ActiveLightColor}" />
+            <SolidColorBrush x:Key="InactiveBrush"
+                             Color="{x:Static env:ThemeColorPicker.InactiveColor}" />
+            <SolidColorBrush x:Key="InactiveLightBrush"
+                             Color="{x:Static env:ThemeColorPicker.InactiveLightColor}" />
+
+            <SolidColorBrush x:Key="MaterialDesign.Brush.DataGrid.Selected"
+                             Color="{x:Static env:ThemeColorPicker.InactiveColor}" />
+            <SolidColorBrush x:Key="MaterialDesign.Brush.DataGrid.RowHoverBackground"
+                             Color="{x:Static env:ThemeColorPicker.InactiveLightColor}" />
+
+
             <Style TargetType="Button"
                    BasedOn="{StaticResource MaterialDesignPaperDarkButton}">
                 <Setter Property="Margin"
@@ -23,8 +32,10 @@
                 <Setter Property="Padding"
                         Value="15,2" />
             </Style>
+
             <Style TargetType="ScrollBar"
                    BasedOn="{StaticResource MaterialDesignScrollBarMinimal}" />
+
             <Style TargetType="TabItem"
                    BasedOn="{StaticResource MaterialDesignTabItem}">
                 <Setter Property="BorderBrush"
@@ -39,7 +50,7 @@
                     <DataTrigger Binding="{Binding IsSelected, RelativeSource={RelativeSource Self}}"
                                  Value="True">
                         <Setter Property="Background"
-                                Value="Black" />
+                                Value="{StaticResource ActiveLightBrush}" />
                         <Setter Property="BorderBrush"
                                 Value="Black" />
                         <Setter Property="Foreground"
@@ -54,7 +65,23 @@
                         Value="Pixel" />
                 <Setter Property="VirtualizingPanel.IsVirtualizing"
                         Value="True" />
+                <Setter Property="Background"
+                        Value="{StaticResource InactiveLightBrush}" />
+                <Setter Property="BorderBrush"
+                        Value="{StaticResource ActiveBrush}" />
+                <Setter Property="BorderThickness"
+                        Value="2" />
             </Style>
+
+
+            <ResourceDictionary.MergedDictionaries>
+                <materialDesign:CustomColorTheme BaseTheme="Light"
+                                                 PrimaryColor="{x:Static env:ThemeColorPicker.ActiveColor}"
+                                                 SecondaryColor="{x:Static env:ThemeColorPicker.InactiveColor}" />
+
+                <ResourceDictionary Source="pack://application:,,,/MaterialDesignThemes.Wpf;component/Themes/MaterialDesign3.Defaults.xaml" />
+                <ResourceDictionary Source="/ResourceDictionaries/Resources.xaml" />
+            </ResourceDictionary.MergedDictionaries>
             
         </ResourceDictionary>
     </Application.Resources>

@@ -35,13 +35,13 @@
 
 	<ItemGroup>
 	  <Reference Include="Model">
-	    <HintPath>..\..\..\Model\Model\bin\Debug\net8.0-windows\Model.dll</HintPath>
+	    <HintPath>..\..\Model\Model\bin\Debug\net8.0-windows\Model.dll</HintPath>
 	  </Reference>
 	  <Reference Include="Resources">
-	    <HintPath>..\..\..\Resources\Resources\bin\Debug\net8.0-windows\Resources.dll</HintPath>
+	    <HintPath>..\..\Resources\Resources\bin\Debug\net8.0-windows\Resources.dll</HintPath>
 	  </Reference>
 	  <Reference Include="ViewModel">
-	    <HintPath>..\..\..\ViewModel\ViewModel\bin\Debug\net8.0-windows\ViewModel.dll</HintPath>
+	    <HintPath>..\..\ViewModel\ViewModel\bin\Debug\net8.0-windows\ViewModel.dll</HintPath>
 	  </Reference>
 	</ItemGroup>
 

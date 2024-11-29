@@ -17,7 +17,7 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Reflection;
 using Assembly = OPP.AppData.Guides.Assembly;
-using OPP.Enviroment;
+using OPP.Environment;
 using OPP.Navigation;
 using System.Windows.Controls.Primitives;
 
